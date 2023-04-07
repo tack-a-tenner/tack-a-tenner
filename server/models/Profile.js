@@ -26,11 +26,23 @@ const profileSchema = new Schema({
   bio: {
     type: String,
     trim: true,
+    validate: {
+      validator: function () {
+        return !this.moneyboi || !!this.bio;
+      },
+      message: "Cannot add bio if not a moneyboi",
+    },
   },
   skills: [
     {
       type: String,
       trim: true,
+      validate: {
+        validator: function () {
+          return !this.moneyboi || !!this.skills.length;
+        },
+        message: "Cannot add skills if not a moneyboi",
+      },
     },
   ],
   requests: [

@@ -87,6 +87,13 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    updateMoneyboi: async (parent, { moneyboi }, context) => {
+      if (context.user) {
+        return Profile.findOneAndUpdate({ _id: context.user._id }, { moneyboi }, { new: true });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    }
   },
 };
 
