@@ -1,27 +1,17 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { useQuery } from "@apollo/client";
 
-import ProfileList from '../components/ProfileList';
-
-import { QUERY_PROFILES } from '../utils/queries';
+import { QUERY_REQUESTS } from "../utils/queries";
+import RequestList from "../components/RequestList";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_PROFILES);
-  const profiles = data?.profiles || [];
+  const { loading, data } = useQuery(QUERY_REQUESTS);
+  const requests = data?.requests || [];
 
   return (
     <main>
       <div className="flex-row justify-center">
-        <div className="col-12 col-md-10 my-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ProfileList
-              profiles={profiles}
-              title="Here's the current roster of friends..."
-            />
-          )}
-        </div>
+        <div className="col-12 col-md-10 my-3">{loading ? <div>Loading...</div> : <RequestList requests={requests} />}</div>
       </div>
     </main>
   );
