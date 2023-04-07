@@ -30,10 +30,9 @@ const requestSchema = new Schema({
     required: true,
     min: 0,
   },
-
-  willExpire: {
+  isActive: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   expirationDate: {
     type: Date,

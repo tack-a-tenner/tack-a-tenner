@@ -18,7 +18,7 @@ const typeDefs = gql`
     createdAt: String
     description: String
     price: Int
-    willExpire: Boolean
+    isActive: Boolean
     expirationDate: String
   }
 
@@ -32,6 +32,8 @@ const typeDefs = gql`
     profile(profileId: ID!): Profile
     # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: Profile
+    requests: [Request]
+    request(requestId: ID!): Request
   }
 
   type Mutation {
@@ -42,7 +44,8 @@ const typeDefs = gql`
     removeProfile: Profile
     removeSkill(skill: String!): Profile
 
-    addRequest(requestTitle: String!, description: String!, price: Int!, willExpire: Boolean, expirationDate: String): Request
+    addRequest(requestTitle: String!, description: String!, price: Int!, isActive: Boolean, expirationDate: String): Request
+    updateRequest(requestId: ID!, requestTitle: String, description: String, price: Int, isActive: Boolean, expirationDate: String): Request
 
     updateMoneyboi(moneyboi: Boolean!): Profile
   }
