@@ -53,3 +53,15 @@ export const ADD_REQUEST = gql`
     }
   }
 `;
+
+export const UPDATE_REQUEST = gql`
+  mutation UpdateRequest($requestId: ID!) {
+    updateRequest(requestId: $requestId) {
+      requestTitle
+      description
+      price
+      isActive
+      expirationDate
+    }
+  }
+`;

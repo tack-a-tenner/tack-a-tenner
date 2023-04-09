@@ -1,41 +1,45 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Modal, TextField, Button } from "@material-ui/core";
+import { Modal, TextField, Button, FormControlLabel, Checkbox } from "@material-ui/core";
 import { useMutation } from "@apollo/client";
-import { ADD_REQUEST } from "../../utils/mutations";
+import { UPDATE_REQUEST } from "../../utils/mutations";
 
-const RequestForm = ({ show, handleClose, handleSubmit }) => {
+const UpdateRequestForm = ({ show, handleClose, handleSubmit, request }) => {
   const [formData, setFormData] = useState({
-    requestTitle: "",
-    description: "",
-    price: 0,
-    expirationDate: "",
+    requestTitle: request.requestTitle,
+    description: request.description,
+    price: request.price,
+    isActive: request.isActive,
+    expirationDate: request.expirationDate,
   });
-  const [addRequest] = useMutation(ADD_REQUEST);
+  const [updateRequest] = useMutation(UPDATE_REQUEST);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setFormData({ ...formData, [name]: checked });
+  };
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await addRequest({
+      const { data } = await updateRequest({
         variables: {
-          requestTitle: formData.requestTitle,
-          description: formData.description,
-          price: Number(formData.price),
-          isActive: formData.isActive,
-          expirationDate: formData.expirationDate,
+          requestId: request._id,
+          ...formData,
         },
       });
       handleClose();
-      handleSubmit(data.addRequest);
+      handleSubmit(data.updateRequest);
       setFormData({
         requestTitle: "",
         description: "",
         price: 0,
+        isActive: true,
         expirationDate: "",
       });
     } catch (err) {
@@ -46,7 +50,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
   return (
     <Modal open={show} onClose={handleClose}>
       <div style={{ backgroundColor: "white", padding: 16 }}>
-        <h2>Create a new request</h2>
+        <h2>Update request</h2>
         <form onSubmit={handleFormSubmit}>
           <TextField label="Request title" name="requestTitle" value={formData.requestTitle} onChange={handleChange} fullWidth required margin="normal" />
           <TextField label="Description" name="description" value={formData.description} onChange={handleChange} fullWidth required margin="normal" />
@@ -63,8 +67,9 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
               shrink: true,
             }}
           />
+          <FormControlLabel control={<Checkbox checked={formData.isActive} onChange={handleCheckboxChange} name="isActive" color="primary" />} label="Is active" />
           <Button variant="contained" color="primary" type="submit">
-            Create Request
+            Update Request
           </Button>
         </form>
       </div>
@@ -72,10 +77,11 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
   );
 };
 
-RequestForm.propTypes = {
+UpdateRequestForm.propTypes = {
   show: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  request: PropTypes.object.isRequired,
 };
 
-export default RequestForm;
+export default UpdateRequestForm;
