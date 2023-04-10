@@ -35,7 +35,8 @@ const requestSchema = new Schema({
     default: true,
   },
   expirationDate: {
-    type: Date,
+    type: String,
+    default: "",
   },
 });
 

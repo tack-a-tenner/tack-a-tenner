@@ -14,12 +14,23 @@ const RequestList = ({ requests }) => {
           requests.map((request) => (
             <div key={request._id} className="col-12 col-xl-6">
               <div className="card mb-3">
-                <h4 className="card-header bg-dark text-light p-2 m-0">
+                <h4 className="card-header bg-dark text-light p-2 m-0 text-center">
                   {request.requestTitle} <br />
                 </h4>
-                <Link className="btn btn-block btn-squared btn-light text-dark" to={`/requests/${request._id}`}>
+                {/* <Link className="btn btn-block btn-squared btn-light text-dark" to={`/requests/${request._id}`}>
                   View and endorse their skills.
-                </Link>
+                </Link> */}
+                <div className="card-body bg-light p-2 text-center">
+                  <p className="card-text">
+                    Requested by: <Link to={`/profiles/${request._id}`}>{request.requestAuthor}</Link>
+                  </p>
+                  <p className="card-text">"{request.description}"</p>
+                  <p className="card-text">
+                    {request.requestAuthor.split(" ").shift()} is offering ${request.price}
+                  </p>
+                  <p className="card-text">Requested on {request.createdAt}</p>
+                  {request.expirationDate !== "" ? <p className="card-text">Expiration Date: {request.expirationDate}</p> : ""}
+                </div>
               </div>
             </div>
           ))}
