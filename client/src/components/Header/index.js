@@ -9,32 +9,35 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
-      <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
-        <Link className="text-dark" to="/">
-          <h1 className="m-0" style={{ fontSize: '3rem' }}>
-            Tech Friends
+    <header className="bg-gray text-dark mb-4 py-3 display-flex align-center">
+      <div className="display-flex justify-space-between-lg justify-center align-center text-center" id="nav-wrap">
+        <Link to="/">
+          <h1 className="m-0" class="font-lobster" style={{ fontSize: '3rem' }}>
+            Tack-A-Tenner
           </h1>
         </Link>
-        <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
+        {/* <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
           Meet your new programming pals.
-        </p>
+        </p> */}
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-primary m-2" to="/me">
-                View My Profile
+            <Link className="text-lobster" to="/request">
+              Make A Request
+            </Link>
+              <Link className="text-lobster" to="/me">
+                My Profile
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              <span className="text-lobster" id="logout" onClick={logout}>
                 Logout
-              </button>
+              </span>
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-primary m-2" to="/login">
+              <Link className="text-lobster" to="/login">
                 Login
               </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
+              <Link className="text-lobster" to="/signup">
                 Signup
               </Link>
             </>

@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Request from './pages/Request';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -40,7 +41,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div >
           <Header />
           <div className="container">
             <Routes>
@@ -59,6 +60,10 @@ function App() {
               <Route 
                 path="/me" 
                 element={<Profile />}
+              />
+              <Route
+              path='/request'
+              element={<Request />}
               />
               <Route 
                 path="/profiles/:profileId"
