@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import AuthService from "../utils/auth";
+import AuthService from "../../utils/auth";
 import { QUERY_REQUESTS } from "../utils/queries";
 import RequestList from "../components/RequestList";
 import RequestForm from "../components/RequestForm";
