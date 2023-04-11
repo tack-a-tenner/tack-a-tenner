@@ -39,10 +39,8 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link onClick={handleOpenForm}>
-                Make A Request
-                <RequestForm show={showForm} handleClose={handleCloseForm} handleSubmit={handleFormSubmit} />
-              </Link>
+              <Link onClick={handleOpenForm}>Make A Request</Link>
+              <RequestForm show={showForm} handleClose={handleCloseForm} handleSubmit={handleFormSubmit} />
               <Link className="text-lobster" to="/me">
                 My Profile
               </Link>
