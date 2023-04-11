@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import AuthService from "../../utils/auth";
-import { QUERY_REQUESTS } from "../utils/queries";
-import RequestList from "../components/RequestList";
-import RequestForm from "../components/RequestForm";
+import Auth from "../../utils/auth";
+import { QUERY_REQUESTS } from "../../utils/queries";
+import RequestForm from "../../components/RequestForm";
 
 const Header = () => {
   const logout = (event) => {
@@ -12,9 +11,6 @@ const Header = () => {
     Auth.logout();
   };
   const { loading, data } = useQuery(QUERY_REQUESTS);
-  const requests = data?.requests || [];
-
-  const isAuthenticated = AuthService.loggedIn();
 
   const [showForm, setShowForm] = useState(false);
 
