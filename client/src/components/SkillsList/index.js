@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { REMOVE_SKILL } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 
-const SkillsList = ({ skills, isLoggedInUser = false }) => {
+const SkillsList = ({ requests, isLoggedInUser = false }) => {
   const [removeSkill, { error }] = useMutation(REMOVE_SKILL, {
     update(cache, { data: { removeSkill } }) {
       try {
@@ -28,23 +28,23 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
     }
   };
 
-  if (!skills.length) {
-    return <h3>No Skills Yet</h3>;
+  if (!requests.length) {
+    return <h3>No Requests Yet</h3>;
   }
 
   return (
     <div>
       <div className="flex-row justify-space-between my-4">
-        {skills &&
-          skills.map((skill) => (
-            <div key={skill} className="col-12 col-xl-6">
+        {requests &&
+          requests.map((request) => (
+            <div key={request.id} className="col-12 col-xl-6">
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0 display-flex align-center">
-                  <span>{skill}</span>
+                  <span>{request.requestTitle}</span>
                   {isLoggedInUser && (
                     <button
                       className="btn btn-sm btn-danger ml-auto"
-                      onClick={() => handleRemoveSkill(skill)}
+                      onClick={() => handleRemoveSkill(request)}
                     >
                       X
                     </button>

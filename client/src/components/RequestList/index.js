@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RequestList = ({ requests }) => {
+const RequestList = ({ requests, profiles }) => {
   if (!requests.length) {
     return <h3>No Requests Yet</h3>;
   }
@@ -22,14 +22,15 @@ const RequestList = ({ requests }) => {
                 </Link> */}
                 <div className="card-body bg-light p-2 text-center">
                   <p className="card-text">
-                    Requested by: <Link to={`/profiles/${request._id}`}>{request.requestAuthor}</Link>
+                    Requested by: <Link to={`/profiles/${request.requestAuthor._id}`}>{request.requestAuthor.name}</Link>
                   </p>
                   <p className="card-text">"{request.description}"</p>
                   <p className="card-text">
-                    {request.requestAuthor.split(" ").shift()} is offering ${request.price}
+                    {request.requestAuthor.name.split(" ").shift()} is offering ${request.price}
                   </p>
                   <p className="card-text">Requested on {request.createdAt}</p>
-                  {request.expirationDate !== "" ? <p className="card-text">Expiration Date: {request.expirationDate}</p> : ""}
+                  {request.expirationDate !== "" ? <p className="card-text">Expiration Date: {request.expirationDate}</p> : <p className="card-text">No expiration date</p>}
+                  <a href={`mailto:${request.requestAuthor.email}`}>Contact</a>
                 </div>
               </div>
             </div>

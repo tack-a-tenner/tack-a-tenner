@@ -14,7 +14,7 @@ const typeDefs = gql`
   type Request {
     _id: ID
     requestTitle: String
-    requestAuthor: String
+    requestAuthor: Profile
     createdAt: String
     description: String
     price: Int

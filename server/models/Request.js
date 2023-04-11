@@ -9,11 +9,11 @@ const requestSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  requestAuthor: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+  requestAuthor: 
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Profile",
+    },
   createdAt: {
     type: Date,
     default: Date.now,
