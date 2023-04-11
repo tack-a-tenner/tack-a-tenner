@@ -10,7 +10,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
     requestTitle: "",
     description: "",
     price: 0,
-    expirationDate: new Date().toISOString().substr(0, 10),
+    expirationDate: "",
   });
   const [addRequest] = useMutation(ADD_REQUEST);
 
