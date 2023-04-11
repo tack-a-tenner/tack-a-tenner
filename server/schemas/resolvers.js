@@ -9,27 +9,27 @@ const resolvers = {
     },
 
     profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
+      return Profile.findOne({ _id: profileId }).populate("requests");
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return Profile.findOne({ _id: context.user._id });
+        return Profile.findOne({ _id: context.user._id }).populate("requests");
       }
       throw new AuthenticationError("You need to be logged in!");
     },
 
     requests: async () => {
-      return Request.find();
+      return Request.find().populate("requestAuthor");
     },
     request: async (parent, { requestId }) => {
-      return Request.findOne({ _id: requestId });
+      return Request.findOne({ _id: requestId }).populate("requestAuthor");
     },
   },
 
   Mutation: {
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
+    addProfile: async (parent, { name, email, password, moneyboi}) => {
+      const profile = await Profile.create({ name, email, password, moneyboi });
       const token = signToken(profile);
 
       return { token, profile };
@@ -86,7 +86,7 @@ const resolvers = {
 
     addRequest: async (parent, args, context) => {
       if (context.user) {
-        const request = await Request.create({ ...args, requestAuthor: context.user.name });
+        const request = await Request.create({ ...args, requestAuthor: context.user._id });
 
         await Profile.findByIdAndUpdate({ _id: context.user._id }, { $addToSet: { requests: request._id } }, { new: true });
 

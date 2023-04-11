@@ -28,6 +28,8 @@ export const QUERY_SINGLE_PROFILE = gql`
       password
       requests {
         _id
+        requestTitle
+        description
       }
       skills
     }
@@ -39,7 +41,11 @@ export const QUERY_ME = gql`
     me {
       _id
       name
-      skills
+      requests {
+        _id
+        requestTitle
+        description
+      }
     }
   }
 `;
@@ -50,8 +56,12 @@ export const QUERY_REQUESTS = gql`
       _id
       description
       price
-      requestAuthor
       requestTitle
+      requestAuthor {
+        _id
+        name
+        email
+      }
       expirationDate
       isActive
       createdAt

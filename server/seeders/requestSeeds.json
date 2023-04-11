@@ -3,7 +3,8 @@
     "requestTitle": "Furniture Builder",
     "requestAuthor": "Brian Kernighan",
     "description": "Need help building my IKEA furniture.",
-    "price": "25.00"
+    "price": "25.00",
+    "expirationDate": "May 1st, 2023"
   },
   {
     "requestTitle": "Tv Mounting",
