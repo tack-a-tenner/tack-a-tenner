@@ -48,11 +48,12 @@ export const REMOVE_SKILL = gql`
 `;
 
 export const ADD_REQUEST = gql`
-  mutation AddRequest($requestTitle: String!, $description: String!, $price: Int!) {
-    addRequest(requestTitle: $requestTitle, description: $description, price: $price) {
+  mutation AddRequest($requestTitle: String!, $description: String!, $price: Int!, $expirationDate: String) {
+    addRequest(requestTitle: $requestTitle, description: $description, price: $price, expirationDate: $expirationDate) {
       requestTitle
       description
       price
+      expirationDate
     }
   }
 `;

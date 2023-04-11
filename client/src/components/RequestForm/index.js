@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import { Modal, TextField, Button } from "@material-ui/core";
 import { useMutation } from "@apollo/client";
 import { ADD_REQUEST } from "../../utils/mutations";
+import dateFormat from "../../utils/dateFormat";
 
 const RequestForm = ({ show, handleClose, handleSubmit }) => {
   const [formData, setFormData] = useState({
     requestTitle: "",
     description: "",
     price: 0,
-    expirationDate: "",
+    expirationDate: new Date().toISOString().substr(0, 10),
   });
   const [addRequest] = useMutation(ADD_REQUEST);
 
@@ -26,8 +27,8 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
           requestTitle: formData.requestTitle,
           description: formData.description,
           price: Number(formData.price),
-          isActive: formData.isActive,
-          expirationDate: formData.expirationDate,
+          isActive: true, // Assuming all new requests are active by default
+          ...(formData.expirationDate && { expirationDate: dateFormat(formData.expirationDate) }),
         },
       });
       handleClose();

@@ -9,11 +9,10 @@ const requestSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  requestAuthor: 
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Profile",
-    },
+  requestAuthor: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -35,8 +34,8 @@ const requestSchema = new Schema({
     default: true,
   },
   expirationDate: {
-    type: String,
-    default: "",
+    type: Date,
+    get: (timestamp) => dateFormat(timestamp),
   },
 });
 
