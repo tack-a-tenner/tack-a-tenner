@@ -1,52 +1,113 @@
-.font-lobster{
-    font-family: 'Lobster', cursive;
-    font-size: 5rem;
-    color: #D92121;
-    padding-left: 50px;
-   
+.font-lobster {
+  font-family: "Lobster", cursive;
+  font-size: 5rem;
+  color: #d92121;
+  padding-left: 50px;
 }
 
 .text-lobster {
-
-    color: #D92121;
-    font-size: 1rem;
-   padding: 3rem;
-   font-weight: 800;
-
+  color: #d92121;
+  font-size: 1rem;
+  padding: 3rem;
+  font-weight: 800;
 }
-header{
-    background-image: url("./assets/images/18656884-group-of-thumbtacks-pinned-on-corkboard.webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 50vh;
-    width: 100%;
-
-  
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f5f5f4;
+  height: 70vh;
+  width: 100%;
 }
 
 #nav-wrap {
-    font: 12px 'opensans-bold', sans-serif;
-    width: 100%;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    margin: 0 auto;
-    z-index: 100;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: #f5f5f4;
- }
+  font: 12px "opensans-bold", sans-serif;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin: 0 auto;
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #f5f5f4;
+}
 
- body {
-    background-color: #f5f5f4;
- }
+body {
+  background-image: url("./assets/images/hd-wallpaper-g49c8ee5d4_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.logo {
+  margin: 0 auto;
+  display: block;
 
- #logout:hover {
-    color: #D92121;
+  margin-left: 50px;
+
+  color: #d92121;
+}
+
+#logout:hover {
+  color: #d92121;
   text-decoration: underline;
- }
+}
 
- #logout:-webkit-any-link {
-    cursor: pointer;
- }
+#logout:-webkit-any-link {
+  cursor: pointer;
+}
+
+#cardCatalog {
+  display: flex;
+  font-family: "Lobster", cursive;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1em;
+}
+
+.cardStock {
+  text-decoration: none;
+  color: #000;
+  background: #ffc;
+  display: block;
+  max-width: 20em;
+  max-height: 30em;
+  /* height:10em;
+  width:10em; */
+  padding: 1em;
+  margin: 1em;
+  font-family: 'Neucha', cursive;
+  font-size: 3rem;
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  transition: transform 0.15s linear;
+}
+
+#requestCard {
+  transform: rotate(-6deg);
+}
+
+#requestCard:nth-child(even) {
+  transform: rotate(4deg);
+  position: relative;
+  top: 5px;
+  background: #cfc;
+}
+#requestCard:nth-child(3n) {
+  transform: rotate(-3deg);
+  position: relative;
+  top: -5px;
+  background: #ccf;
+}
+#requestCard:nth-child(5n) {
+  transform: rotate(5deg);
+  position: relative;
+  top: -10px;
+}
+
+#requestCard:hover,
+requestCard:focus {
+  box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+  transform: scale(1.25);
+  position: relative;
+  z-index: 5;
+}

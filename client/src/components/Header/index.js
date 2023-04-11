@@ -27,15 +27,17 @@ const Header = () => {
   };
   return (
     <header className="bg-gray text-dark mb-4 py-3 display-flex align-center">
-      <div className="display-flex justify-space-between-lg justify-center align-center text-center" id="nav-wrap">
-        <Link to="/">
-          <h1 className="m-0" class="font-lobster" style={{ fontSize: "3rem" }}>
+
+          <h1 className="m-0" class="font-lobster" style={{ fontSize: '10rem' }}>
+
             Tack-A-Tenner
           </h1>
+        <p className="m-0" class="font-lobster" style={{ fontSize: '2rem' }}> America's #1 Freelance Website Since 2023</p>
+          
+      <div className="display-flex justify-space-between-lg justify-center align-center text-center" id="nav-wrap">
+        <Link to="/">
+        <img src="./assets/images/redTack.png" style={{height:"100px",width: "100px"}} alt="Tack-A-Tenner Logo" className="logo"/>
         </Link>
-        {/* <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
-          Meet your new programming pals.
-        </p> */}
         <div>
           {Auth.loggedIn() ? (
             <>
