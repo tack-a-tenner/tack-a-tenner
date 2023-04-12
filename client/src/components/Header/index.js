@@ -26,14 +26,14 @@ const Header = () => {
     console.log(request);
   };
   return (
-    <header className="bg-gray text-dark mb-4 py-3 display-flex align-center">
-
-          <h1 className="m-0" class="font-lobster" style={{ fontSize: '10rem' }}>
+    <header className="bg-gray text-dark mb-4 py-3 display-flex align-center" >
+      <div className="banner">
+          <h1 className="banner-text">
 
             Tack-A-Tenner
           </h1>
-        <p className="m-0" class="font-lobster" style={{ fontSize: '2rem' }}> America's #1 Freelance Website Since 2023</p>
-          
+        <p className="banner-text-two"> America's #1 Freelance Website Since 2023</p>
+        </div>  
       <div className="display-flex justify-space-between-lg justify-center align-center text-center" id="nav-wrap">
         <Link to="/">
         <img src="./assets/images/redTack.png" style={{height:"100px",width: "100px"}} alt="Tack-A-Tenner Logo" className="logo"/>
