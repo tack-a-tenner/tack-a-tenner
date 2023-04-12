@@ -22,7 +22,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const isoExpirationDate = formData.expirationDate ? new Date(formData.expirationDate).toISOString().substr(0, 10) : undefined;
+      const isoExpirationDate = formData.expirationDate ? new Date(formData.expirationDate).toISOString().substr(0, 10) : "";
 
       const { data } = await addRequest({
         variables: {
