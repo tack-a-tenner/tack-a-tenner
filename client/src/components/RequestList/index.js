@@ -27,7 +27,7 @@ const RequestList = ({ requests, profiles }) => {
                     {request.requestAuthor.name.split(" ").shift()} is offering ${request.price}
                   </p>
                   <p>Requested on {request.createdAt}</p>
-                  {request.expirationDate !== "" ? <p>Expiration Date: {request.expirationDate}</p> : <p>No expiration date</p>}
+                  {request.expirationDate !== "undefined NaNth, NaN" ? <p>Expiration Date: {request.expirationDate}</p> : <p>No expiration date</p>}
                   <a href={`mailto:${request.requestAuthor.email}`}>Contact</a>
                 </div>
               </div>

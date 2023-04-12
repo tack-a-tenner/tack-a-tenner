@@ -27,10 +27,13 @@ const UpdateRequestForm = ({ show, handleClose, handleSubmit, request }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      const isoExpirationDate = formData.expirationDate ? new Date(formData.expirationDate).toISOString().substr(0, 10) : undefined;
+
       const { data } = await updateRequest({
         variables: {
           requestId: request._id,
           ...formData,
+          ...(isoExpirationDate && { expirationDate: isoExpirationDate }),
         },
       });
       handleClose();
