@@ -1,31 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import UpdateRequest from '../UpdateRequest'; // Import the UpdateRequest component
 
 import { REMOVE_SKILL } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 
 const SkillsList = ({ requests, isLoggedInUser = false }) => {
-  const [removeSkill, { error }] = useMutation(REMOVE_SKILL, {
-    update(cache, { data: { removeSkill } }) {
-      try {
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: { me: removeSkill },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
-  });
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [currentRequest, setCurrentRequest] = useState(null);
 
-  const handleRemoveSkill = async (skill) => {
-    try {
-      const { data } = await removeSkill({
-        variables: { skill },
-      });
-    } catch (err) {
-      console.error(err);
-    }
+  const handleUpdateRequest = (updatedRequest) => {
+    // Perform any additional logic here after successfully updating the request
+  };
+
+  const handleEditButtonClick = (request) => {
+    setCurrentRequest(request);
+    setShowUpdateForm(true);
   };
 
   if (!requests.length) {
@@ -43,10 +33,10 @@ const SkillsList = ({ requests, isLoggedInUser = false }) => {
                   <span>{request.requestTitle}</span>
                   {isLoggedInUser && (
                     <button
-                      className="btn btn-sm btn-danger ml-auto"
-                      onClick={() => handleRemoveSkill(request)}
+                      className="btn btn-sm btn-info ml-auto"
+                      onClick={() => handleEditButtonClick(request)}
                     >
-                      X
+                      Edit
                     </button>
                   )}
                 </h4>
@@ -54,8 +44,13 @@ const SkillsList = ({ requests, isLoggedInUser = false }) => {
             </div>
           ))}
       </div>
-      {error && (
-        <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+      {showUpdateForm && (
+        <UpdateRequest
+          show={showUpdateForm}
+          handleClose={() => setShowUpdateForm(false)}
+          handleSubmit={handleUpdateRequest}
+          request={currentRequest}
+        />
       )}
     </div>
   );

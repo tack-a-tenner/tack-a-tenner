@@ -45,6 +45,7 @@ const Header = () => {
           {Auth.loggedIn() ? (
             <>
 
+
           <li>
           <Link className="text-lobster" to="/me">
                 My Profile
@@ -63,6 +64,7 @@ const Header = () => {
           </li>
 
           </>
+
           ) : (
             <>
           <li>

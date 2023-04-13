@@ -48,23 +48,25 @@ export const REMOVE_SKILL = gql`
 `;
 
 export const ADD_REQUEST = gql`
-  mutation AddRequest($requestTitle: String!, $description: String!, $price: Int!) {
-    addRequest(requestTitle: $requestTitle, description: $description, price: $price) {
+  mutation AddRequest($requestTitle: String!, $description: String!, $price: Int!, $expirationDate: String) {
+    addRequest(requestTitle: $requestTitle, description: $description, price: $price, expirationDate: $expirationDate) {
       requestTitle
       description
       price
+      expirationDate
     }
   }
 `;
 
 export const UPDATE_REQUEST = gql`
-  mutation UpdateRequest($requestId: ID!) {
-    updateRequest(requestId: $requestId) {
+  mutation updateRequest($requestId: ID!, $requestTitle: String, $description: String, $price: Int, $isActive: Boolean, $expirationDate: String) {
+    updateRequest(requestId: $requestId, requestTitle: $requestTitle, description: $description, price: $price, isActive: $isActive, expirationDate: $expirationDate) {
+      _id
       requestTitle
-      description
       price
       isActive
       expirationDate
+      description
     }
   }
 `;

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Modal, TextField, Button } from "@material-ui/core";
 import { useMutation } from "@apollo/client";
 import { ADD_REQUEST } from "../../utils/mutations";
+import dateFormat from "../../utils/dateFormat";
 
 const RequestForm = ({ show, handleClose, handleSubmit }) => {
   const [formData, setFormData] = useState({
@@ -21,13 +22,15 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      const isoExpirationDate = formData.expirationDate ? new Date(formData.expirationDate) : "";
+
       const { data } = await addRequest({
         variables: {
           requestTitle: formData.requestTitle,
           description: formData.description,
           price: Number(formData.price),
-          isActive: formData.isActive,
-          expirationDate: formData.expirationDate,
+          isActive: true,
+          ...(isoExpirationDate && { expirationDate: isoExpirationDate }),
         },
       });
       handleClose();

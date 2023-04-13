@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { Modal, TextField, Button, FormControlLabel, Checkbox } from "@material-ui/core";
 import { useMutation } from "@apollo/client";
 import { UPDATE_REQUEST } from "../../utils/mutations";
+import { useNavigate } from "react-router-dom";
 
-const UpdateRequestForm = ({ show, handleClose, handleSubmit, request }) => {
+const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
   const [formData, setFormData] = useState({
     requestTitle: request.requestTitle,
     description: request.description,
@@ -13,9 +14,13 @@ const UpdateRequestForm = ({ show, handleClose, handleSubmit, request }) => {
     expirationDate: request.expirationDate,
   });
   const [updateRequest] = useMutation(UPDATE_REQUEST);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+    if (name === "price") {
+      value = parseInt(value);
+    }
     setFormData({ ...formData, [name]: value });
   };
 
@@ -42,6 +47,7 @@ const UpdateRequestForm = ({ show, handleClose, handleSubmit, request }) => {
         isActive: true,
         expirationDate: "",
       });
+      navigate("/me");
     } catch (err) {
       console.error(err);
     }
@@ -77,11 +83,11 @@ const UpdateRequestForm = ({ show, handleClose, handleSubmit, request }) => {
   );
 };
 
-UpdateRequestForm.propTypes = {
+UpdateRequest.propTypes = {
   show: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   request: PropTypes.object.isRequired,
 };
 
-export default UpdateRequestForm;
+export default UpdateRequest;
