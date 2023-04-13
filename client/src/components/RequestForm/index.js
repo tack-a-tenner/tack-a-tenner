@@ -48,28 +48,30 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
 
   return (
     <Modal open={show} onClose={handleClose}>
-      <div style={{ backgroundColor: "white", padding: 16 }}>
-        <h2>Create a new request</h2>
-        <form onSubmit={handleFormSubmit}>
-          <TextField label="Request title" name="requestTitle" value={formData.requestTitle} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField label="Description" name="description" value={formData.description} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField label="Price" name="price" type="number" value={formData.price} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField
-            label="Expiration date"
-            name="expirationDate"
-            type="date"
-            value={formData.expirationDate}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <Button variant="contained" color="primary" type="submit">
-            Create Request
-          </Button>
-        </form>
+      <div className="modal-main-request conatainer-form">
+        <div className="container-text">
+          <h2 className="modal-text">Create a new request</h2>
+          <form onSubmit={handleFormSubmit}>
+            <TextField label="Request title" name="requestTitle" value={formData.requestTitle} onChange={handleChange} fullWidth required margin="normal" />
+            <TextField label="Description" name="description" value={formData.description} onChange={handleChange} fullWidth required margin="normal" />
+            <TextField label="Price" name="price" type="number" value={formData.price} onChange={handleChange} fullWidth required margin="normal" />
+            <TextField
+              label="Expiration date"
+              name="expirationDate"
+              type="date"
+              value={formData.expirationDate}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <Button variant="contained" color="primary" type="submit">
+              Create Request
+            </Button>
+          </form>
+        </div>
       </div>
     </Modal>
   );
