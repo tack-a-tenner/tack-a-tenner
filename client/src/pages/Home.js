@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
-        <div className="col-12 col-md-10 my-3">{loading ? <div>Loading...</div> : <RequestList requests={requests} />}</div>
+        <div>{loading ? <div>Loading...</div> : <RequestList requests={requests} />}</div>
       </div>
     </main>
   );

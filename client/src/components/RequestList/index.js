@@ -32,6 +32,7 @@ const RequestList = ({ requests, profiles }) => {
                     {request.expirationDate !== "undefined NaNth, NaN" ? <p>Expiration Date: {request.expirationDate}</p> : <p>No expiration date</p>}
                     <a href={`mailto:${request.requestAuthor.email}`}>Contact</a>
                   </div>
+
                 </div>
               </div>
             ))}
