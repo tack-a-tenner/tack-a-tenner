@@ -57,29 +57,36 @@ const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
 
   return (
     <Modal open={show} onClose={handleClose}>
-      <div style={{ backgroundColor: "white", padding: 16 }}>
-        <h2>Update request</h2>
-        <form onSubmit={handleFormSubmit}>
-          <TextField label="Request title" name="requestTitle" value={requestTitle} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField label="Description" name="description" value={description} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField label="Price" name="price" type="number" value={price} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField
-            label="Expiration date"
-            name="expirationDate"
-            type="date"
-            value={expirationDate}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <FormControlLabel control={<Checkbox checked={isActive} onChange={handleCheckboxChange} name="isActive" color="primary" />} label="Is active" />
-          <Button variant="contained" color="primary" type="submit">
-            Update Request
-          </Button>
-        </form>
+      <div className="modal-main-request conatainer-form">
+        <button className="container-close" type="button" onClick={handleClose}>
+          X
+        </button>
+        <div className="container-text">
+          <h2 className="modal-text">Update request</h2>
+          <form onSubmit={handleFormSubmit}>
+            <input className="form-input" placeholder="Request Title" name="requestTitle" type="text" value={requestTitle} onChange={handleChange} />
+
+            <input className="form-input" placeholder="Description" name="description" type="text" value={description} onChange={handleChange} />
+            <input className="form-input" placeholder="Price" name="price" value={price} onChange={handleChange} />
+
+            <TextField
+              label="Expiration date"
+              name="expirationDate"
+              type="date"
+              value={expirationDate}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <FormControlLabel control={<Checkbox checked={isActive} onChange={handleCheckboxChange} name="isActive" color="primary" />} label="Is active" />
+            <Button className="btn btn-block btn-info" type="submit">
+              Update Request
+            </Button>
+          </form>
+        </div>
       </div>
     </Modal>
   );
