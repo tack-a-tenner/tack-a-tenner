@@ -49,12 +49,17 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
   return (
     <Modal open={show} onClose={handleClose}>
       <div className="modal-main-request conatainer-form">
+      <button className='container-close' type="button" onClick={handleClose}>
+          X
+        </button>
         <div className="container-text">
-          <h2 className="modal-text">Create a new request</h2>
+          <h2 className="modal-text">Create A Request</h2>
           <form onSubmit={handleFormSubmit}>
-            <TextField label="Request title" name="requestTitle" value={formData.requestTitle} onChange={handleChange} fullWidth required margin="normal" />
-            <TextField label="Description" name="description" value={formData.description} onChange={handleChange} fullWidth required margin="normal" />
-            <TextField label="Price" name="price" type="number" value={formData.price} onChange={handleChange} fullWidth required margin="normal" />
+            <input className="form-input" placeholder="Request Title" name="requestTitle" type="text" value={formData.requestTitle} onChange={handleChange} />
+
+            <input className="form-input" placeholder="Description" name="description" type="text" value={formData.description} onChange={handleChange} />
+            <input className="form-input" placeholder="Price" name="price" value={formData.price} onChange={handleChange} />
+
             <TextField
               label="Expiration date"
               name="expirationDate"
@@ -67,7 +72,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
                 shrink: true,
               }}
             />
-            <Button variant="contained" color="primary" type="submit">
+            <Button className="btn btn-block btn-info" type="submit">
               Create Request
             </Button>
           </form>
