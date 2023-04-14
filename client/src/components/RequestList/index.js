@@ -8,7 +8,7 @@ const RequestList = ({ requests, profiles }) => {
 
   return (
     <div>
-      <h3 className="text-dark">Some recent requests...</h3>
+      <h3 className="text-dark m-3 bg-light text-center">Some recent requests...</h3>
       <div id="cardCatalog">
         {requests &&
           requests

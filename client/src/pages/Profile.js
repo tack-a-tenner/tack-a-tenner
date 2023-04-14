@@ -32,9 +32,9 @@ const Profile = () => {
 
   return (
     <div>
-      <h3 className="text-dark">Your active requests...</h3>
+      <h3 className="text-dark m-3 bg-light text-center">Your active requests...</h3>
       <div>{profile.requests?.length > 0 && <SkillsList requests={profile.requests} isLoggedInUser={!profileId && true} />}</div>
-      <h3 className="text-dark">Past requests...</h3>
+      <h3 className="text-dark m-3 bg-light text-center">Past requests...</h3>
       <div>{profile.requests?.length > 0 && <DeactiveRequest requests={profile.requests} isLoggedInUser={!profileId && true} />}</div>
     </div>
   );
