@@ -4,17 +4,17 @@ const addDateSuffix = (date) => {
   // get last char of date string
   const lastChar = dateStr.charAt(dateStr.length - 1);
 
-  if (lastChar === "1" && dateStr !== "11") {
-    dateStr = `${dateStr}st`;
-  } else if (lastChar === "2" && dateStr !== "12") {
-    dateStr = `${dateStr}nd`;
-  } else if (lastChar === "3" && dateStr !== "13") {
-    dateStr = `${dateStr}rd`;
-  } else {
-    dateStr = `${dateStr}th`;
-  }
+  // if (lastChar === "1" && dateStr !== "11") {
+  //   dateStr = `${dateStr}st`;
+  // } else if (lastChar === "2" && dateStr !== "12") {
+  //   dateStr = `${dateStr}nd`;
+  // } else if (lastChar === "3" && dateStr !== "13") {
+  //   dateStr = `${dateStr}rd`;
+  // } else {
+  //   dateStr = `${dateStr}th`;
+  // }
 
-  return dateStr;
+  return dateStr.length === 1 ? `0${dateStr}` : dateStr;
 };
 
 // function to format a timestamp, accepts the timestamp and an `options` object as parameters
@@ -25,7 +25,7 @@ module.exports = (timestamp, { monthLength = "short", dateSuffix = true } = {}) 
     1: monthLength === "short" ? "Feb" : "February",
     2: monthLength === "short" ? "Mar" : "March",
     3: monthLength === "short" ? "Apr" : "April",
-    4: monthLength === "short" ? "May" : "May",
+    4: "05",
     5: monthLength === "short" ? "Jun" : "June",
     6: monthLength === "short" ? "Jul" : "July",
     7: monthLength === "short" ? "Aug" : "August",
@@ -42,7 +42,8 @@ module.exports = (timestamp, { monthLength = "short", dateSuffix = true } = {}) 
 
   const year = dateObj.getFullYear();
 
-  const formattedDate = `${formattedMonth} ${dayOfMonth}, ${year}`;
+  // const formattedDate = `${formattedMonth} ${dayOfMonth}, ${year}`;
+  const formattedDate = `${year}-${formattedMonth}-${dayOfMonth}`;
 
   return formattedDate;
 };

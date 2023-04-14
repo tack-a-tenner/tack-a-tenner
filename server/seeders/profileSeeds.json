@@ -1,0 +1,10 @@
+[
+    {
+      "_id": "1234abcd5678",
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "password": "password01",
+      "moneyboi": "false",
+      "requests": [{ "_id": "abcd1234efgh" }]
+    }
+  ]
