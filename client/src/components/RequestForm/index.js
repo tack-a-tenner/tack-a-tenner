@@ -41,6 +41,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
         price: 0,
         expirationDate: "",
       });
+      window.location.reload(false);
     } catch (err) {
       console.error(err);
     }
@@ -49,7 +50,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
   return (
     <Modal open={show} onClose={handleClose}>
       <div className="modal-main-request conatainer-form">
-      <button className='container-close' type="button" onClick={handleClose}>
+        <button className="container-close" type="button" onClick={handleClose}>
           X
         </button>
         <div className="container-text">
