@@ -55,7 +55,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
         </button>
         <div className="container-text">
           <h2 className="modal-text">Create A Request</h2>
-          <form onSubmit={handleFormSubmit}>
+          <form>
             <input className="form-input" placeholder="Request Title" name="requestTitle" type="text" value={formData.requestTitle} onChange={handleChange} />
 
             <input className="form-input" placeholder="Description" name="description" type="text" value={formData.description} onChange={handleChange} />
@@ -73,7 +73,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
                 shrink: true,
               }}
             />
-            <Button className="btn btn-block btn-info" type="submit">
+            <Button className="btn btn-block btn-info" type="submit" onClick={handleFormSubmit}>
               Create Request
             </Button>
           </form>
