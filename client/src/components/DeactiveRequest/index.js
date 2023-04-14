@@ -25,8 +25,7 @@ const SkillsList = ({ requests, isLoggedInUser = false }) => {
   return (
     <div>
       <div className="flex-row justify-space-between my-4">
-        {requests &&
-          requests.filter(i => i.isActive === true).map((request) => (
+        {requests && requests.filter(i => i.isActive === false).map((request) => (
             <div key={request.id} className="col-12 col-xl-6">
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0 display-flex align-center">
