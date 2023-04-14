@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import SkillsList from "../components/SkillsList";
+import DeactiveRequest from "../components/DeactiveRequest";
 import SkillForm from "../components/SkillForm";
 
 import { QUERY_SINGLE_PROFILE, QUERY_ME } from "../utils/queries";
@@ -29,7 +30,14 @@ const Profile = () => {
     return <h4>You need to be logged in to see your profile page. Use the navigation links above to sign up or log in!</h4>;
   }
 
-  return <div>{profile.requests?.length > 0 && <SkillsList requests={profile.requests} isLoggedInUser={!profileId && true} />}</div>;
+  return (
+    <div>
+      <h3 className="text-dark">Your active requests...</h3>
+      <div>{profile.requests?.length > 0 && <SkillsList requests={profile.requests} isLoggedInUser={!profileId && true} />}</div>
+      <h3 className="text-dark">Past requests...</h3>
+      <div>{profile.requests?.length > 0 && <DeactiveRequest requests={profile.requests} isLoggedInUser={!profileId && true} />}</div>
+    </div>
+  );
 };
 
 export default Profile;

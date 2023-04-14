@@ -25,8 +25,10 @@ const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
   };
 
   const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setFormData({ ...formData, [name]: checked });
+    const { name, value } = event.target;
+    if (name === "isActive") {
+      setFormData({ ...formData, isActive: event.target.checked });
+    }
   };
 
   const handleFormSubmit = async (event) => {
@@ -44,8 +46,6 @@ const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
         requestTitle: "",
         description: "",
         price: 0,
-        isActive: true,
-        expirationDate: "",
       });
       navigate("/me");
     } catch (err) {
@@ -53,19 +53,21 @@ const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
     }
   };
 
+  const { isActive, expirationDate, requestTitle, description, price } = formData;
+
   return (
     <Modal open={show} onClose={handleClose}>
       <div style={{ backgroundColor: "white", padding: 16 }}>
         <h2>Update request</h2>
         <form onSubmit={handleFormSubmit}>
-          <TextField label="Request title" name="requestTitle" value={formData.requestTitle} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField label="Description" name="description" value={formData.description} onChange={handleChange} fullWidth required margin="normal" />
-          <TextField label="Price" name="price" type="number" value={formData.price} onChange={handleChange} fullWidth required margin="normal" />
+          <TextField label="Request title" name="requestTitle" value={requestTitle} onChange={handleChange} fullWidth required margin="normal" />
+          <TextField label="Description" name="description" value={description} onChange={handleChange} fullWidth required margin="normal" />
+          <TextField label="Price" name="price" type="number" value={price} onChange={handleChange} fullWidth required margin="normal" />
           <TextField
             label="Expiration date"
             name="expirationDate"
             type="date"
-            value={formData.expirationDate}
+            value={expirationDate}
             onChange={handleChange}
             fullWidth
             margin="normal"
@@ -73,7 +75,7 @@ const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
               shrink: true,
             }}
           />
-          <FormControlLabel control={<Checkbox checked={formData.isActive} onChange={handleCheckboxChange} name="isActive" color="primary" />} label="Is active" />
+          <FormControlLabel control={<Checkbox checked={isActive} onChange={handleCheckboxChange} name="isActive" color="primary" />} label="Is active" />
           <Button variant="contained" color="primary" type="submit">
             Update Request
           </Button>

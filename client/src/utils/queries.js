@@ -30,6 +30,9 @@ export const QUERY_SINGLE_PROFILE = gql`
         _id
         requestTitle
         description
+        price
+        expirationDate
+        isActive
       }
       skills
     }
@@ -45,6 +48,9 @@ export const QUERY_ME = gql`
         _id
         requestTitle
         description
+        price
+        expirationDate
+        isActive
       }
     }
   }
