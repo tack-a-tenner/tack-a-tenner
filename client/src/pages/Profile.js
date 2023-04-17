@@ -27,14 +27,14 @@ const Profile = () => {
   }
 
   if (!profile?.name) {
-    return <h4>You need to be logged in to see your profile page. Use the navigation links above to sign up or log in!</h4>;
+    return <h4 className="sectionTitle">You need to be logged in to see your profile page. Use the navigation links above to sign up or log in!</h4>;
   }
 
   return (
     <div>
-      <h3 className="text-dark m-3 bg-light text-center">Your active requests...</h3>
+      <h3 className="sectionTitle">Your active requests...</h3>
       <div>{profile.requests?.length > 0 && <SkillsList requests={profile.requests} isLoggedInUser={!profileId && true} />}</div>
-      <h3 className="text-dark m-3 bg-light text-center">Past requests...</h3>
+      <h3 className="sectionTitle">Past requests...</h3>
       <div>{profile.requests?.length > 0 && <DeactiveRequest requests={profile.requests} isLoggedInUser={!profileId && true} />}</div>
     </div>
   );

@@ -19,21 +19,22 @@ const SkillsList = ({ requests, isLoggedInUser = false }) => {
   };
 
   if (!requests.length) {
-    return <h3>No Requests Yet</h3>;
+    return <h3 className="sectionTitle">No Requests Yet</h3>;
   }
 
   return (
     <div>
-      <div className="flex-row justify-space-between my-4">
+      <div id="cardCatalog">
         {requests &&
           requests.filter(i => i.isActive === true).map((request) => (
-            <div key={request.id} className="col-12 col-xl-6">
-              <div className="card mb-3">
-                <h4 className="card-header bg-dark text-light p-2 m-0 display-flex align-center">
-                  <span>{request.requestTitle}</span>
+            <div key={request.id}className="cardStock" id="requestCard">
+              <div >
+                <h4 >
+                  <div>{request.requestTitle}</div>
+                  <p>{request.description}</p>
                   {isLoggedInUser && (
                     <button
-                      className="btn btn-sm btn-info ml-auto"
+                      className="btn btn-lrg btn-info ml-auto"
                       onClick={() => handleEditButtonClick(request)}
                     >
                       Edit
