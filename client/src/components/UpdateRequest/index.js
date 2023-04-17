@@ -69,7 +69,7 @@ const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
             <input className="form-input" placeholder="Description" name="description" type="text" value={description} onChange={handleChange} />
             <input className="form-input" placeholder="Price" name="price" value={price} onChange={handleChange} />
 
-            <TextField
+            {/* <TextField
               label="Expiration date"
               name="expirationDate"
               type="date"
@@ -80,7 +80,7 @@ const UpdateRequest = ({ show, handleClose, handleSubmit, request }) => {
               InputLabelProps={{
                 shrink: true,
               }}
-            />
+            /> */}
             <FormControlLabel control={<Checkbox checked={isActive} onChange={handleCheckboxChange} name="isActive" color="primary" />} label="Is active" />
             <Button className="btn btn-block btn-info" type="submit">
               Update Request

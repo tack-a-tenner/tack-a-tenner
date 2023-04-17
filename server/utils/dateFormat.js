@@ -25,7 +25,7 @@ module.exports = (timestamp, { monthLength = "short", dateSuffix = true } = {}) 
     1: monthLength === "short" ? "Feb" : "February",
     2: monthLength === "short" ? "Mar" : "March",
     3: monthLength === "short" ? "Apr" : "April",
-    4: "05",
+    4: monthLength === "short" ? "May" : "May",
     5: monthLength === "short" ? "Jun" : "June",
     6: monthLength === "short" ? "Jul" : "July",
     7: monthLength === "short" ? "Aug" : "August",

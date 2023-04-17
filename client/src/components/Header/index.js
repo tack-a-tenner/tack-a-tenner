@@ -44,45 +44,41 @@ const Header = () => {
           </li>
           {Auth.loggedIn() ? (
             <>
-
-
-          <li>
-          <Link className="text-lobster" to="/me">
-                My Profile
-              </Link>
-          </li>
-          <li>
-          <Link className="smoothscroll text-lobster" onClick={handleOpenForm}>
-                Make A Request
-                <RequestForm show={showForm} handleClose={handleCloseForm} handleSubmit={handleFormSubmit} />
-              </Link>
-          </li>
-          <li>
-            <a className="text-lobster" id="logout" onClick={logout}>
-            Logout
-            </a>
-          </li>
-
-          </>
-
+              <li>
+                <Link className="text-lobster" to="/me">
+                  My Profile
+                </Link>
+              </li>
+              <li>
+                <Link className="smoothscroll text-lobster" onClick={handleOpenForm}>
+                  Make A Request
+                  <RequestForm show={showForm} handleClose={handleCloseForm} handleSubmit={handleFormSubmit} />
+                </Link>
+              </li>
+              <li>
+                <a className="text-lobster" id="logout" onClick={logout}>
+                  Logout
+                </a>
+              </li>
+            </>
           ) : (
             <>
-          <li>
+              {/* <li>
             <a className="smoothscroll text-lobster" href="/requestlist">
               Current Requests
             </a>
-          </li>
-          <li>
-            <Dashboard2 className="smoothscroll text-lobster" href="dashboard2">
-              Login
-            </Dashboard2>
-          </li>
-          <li>
-            <Dashboard className="smoothscroll text-lobster" href="dashboard">
-              Signup
-            </Dashboard>
-          </li>
-          </>
+          </li> */}
+              <li>
+                <Dashboard2 className="smoothscroll text-lobster" href="dashboard2">
+                  Login
+                </Dashboard2>
+              </li>
+              <li>
+                <Dashboard className="smoothscroll text-lobster" href="dashboard">
+                  Signup
+                </Dashboard>
+              </li>
+            </>
           )}
         </ul>
       </nav>
@@ -91,7 +87,6 @@ const Header = () => {
         <h1 className="banner-text">Tack-A-Tenner</h1>
         <p className="banner-text-two"> America's #1 Freelance Website Since 2023</p>
       </div>
-     
     </header>
   );
 };

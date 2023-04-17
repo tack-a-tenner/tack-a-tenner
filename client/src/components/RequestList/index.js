@@ -22,17 +22,16 @@ const RequestList = ({ requests, profiles }) => {
 
                   <div>
                     <p>
-                      {/* Requested by: <Link to={`/profiles/${request.requestAuthor._id}`}>{request.requestAuthor.name}</Link> */}
+                      Requested by: <Link to={`/profiles/${request.requestAuthor._id}`}>{request.requestAuthor.name}</Link>
                     </p>
                     <p>"{request.description}"</p>
                     <p>
-                      {/* {request.requestAuthor.name.split(" ").shift()} is offering ${request.price} */}
+                      {request.requestAuthor.name.split(" ").shift()} is offering ${request.price}
                     </p>
                     <p>Requested on {request.createdAt}</p>
-                    {request.expirationDate !== "undefined NaNth, NaN" ? <p>Expiration Date: {request.expirationDate}</p> : <p>No expiration date</p>}
-                    {/* <a href={`mailto:${request.requestAuthor.email}`}>Contact</a> */}
+                    {/* {request.expirationDate !== "NaN-undefined-NaN" ? <p>Expiration Date: {request.expirationDate}</p> : <p>No expiration date</p>} */}
+                    <a href={`mailto:${request.requestAuthor.email}`}>Contact</a>
                   </div>
-
                 </div>
               </div>
             ))}

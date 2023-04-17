@@ -10,7 +10,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
     requestTitle: "",
     description: "",
     price: 0,
-    expirationDate: "",
+    // expirationDate: "",
   });
   const [addRequest] = useMutation(ADD_REQUEST);
 
@@ -22,7 +22,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const isoExpirationDate = formData.expirationDate ? new Date(formData.expirationDate) : "";
+      // const isoExpirationDate = formData.expirationDate ? new Date(formData.expirationDate) : "";
 
       const { data } = await addRequest({
         variables: {
@@ -30,7 +30,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
           description: formData.description,
           price: Number(formData.price),
           isActive: true,
-          ...(isoExpirationDate && { expirationDate: isoExpirationDate }),
+          // ...(isoExpirationDate && { expirationDate: isoExpirationDate }),
         },
       });
       handleClose();
@@ -39,7 +39,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
         requestTitle: "",
         description: "",
         price: 0,
-        expirationDate: "",
+        // expirationDate: "",
       });
       window.location.reload(false);
     } catch (err) {
@@ -61,7 +61,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
             <input className="form-input" placeholder="Description" name="description" type="text" value={formData.description} onChange={handleChange} />
             <input className="form-input" placeholder="Price" name="price" value={formData.price} onChange={handleChange} />
 
-            <TextField
+            {/* <TextField
               label="Expiration date"
               name="expirationDate"
               type="date"
@@ -72,7 +72,7 @@ const RequestForm = ({ show, handleClose, handleSubmit }) => {
               InputLabelProps={{
                 shrink: true,
               }}
-            />
+            /> */}
             <Button className="btn btn-block btn-info" type="submit" onClick={handleFormSubmit}>
               Create Request
             </Button>

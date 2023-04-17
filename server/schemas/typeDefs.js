@@ -19,7 +19,7 @@ const typeDefs = gql`
     description: String
     price: Int
     isActive: Boolean
-    expirationDate: String
+    # expirationDate: String
   }
 
   type Auth {
@@ -44,8 +44,8 @@ const typeDefs = gql`
     removeProfile: Profile
     removeSkill(skill: String!): Profile
 
-    addRequest(requestTitle: String!, description: String!, price: Int!, isActive: Boolean, expirationDate: String): Request
-    updateRequest(requestId: ID!, requestTitle: String, description: String, price: Int, isActive: Boolean, expirationDate: String): Request
+    addRequest(requestTitle: String!, description: String!, price: Int!, isActive: Boolean): Request
+    updateRequest(requestId: ID!, requestTitle: String, description: String, price: Int, isActive: Boolean): Request
 
     updateMoneyboi(moneyboi: Boolean!): Profile
   }

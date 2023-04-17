@@ -31,7 +31,6 @@ export const QUERY_SINGLE_PROFILE = gql`
         requestTitle
         description
         price
-        expirationDate
         isActive
       }
       skills
@@ -49,7 +48,6 @@ export const QUERY_ME = gql`
         requestTitle
         description
         price
-        expirationDate
         isActive
       }
     }
@@ -68,7 +66,6 @@ export const QUERY_REQUESTS = gql`
         name
         email
       }
-      expirationDate
       isActive
       createdAt
     }
@@ -81,7 +78,6 @@ export const QUERY_SINGLE_REQUEST = gql`
       createdAt
       _id
       description
-      expirationDate
       isActive
       price
       requestAuthor
