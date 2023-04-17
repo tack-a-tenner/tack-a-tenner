@@ -47,7 +47,7 @@ const Request = (props) => {
           <h4 className="card-header bg-dark text-light p-2">Request</h4>
           <div className="card-body">
             {data ? (
-              <p>
+              <p className="sectionTitle">
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>

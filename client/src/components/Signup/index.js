@@ -59,7 +59,7 @@ const Signup = ({ handleClose, show, children }) => {
                 <input className="form-input" placeholder="Your email" name="email" type="email" value={formState.email} onChange={handleChange} />
                 <input className="form-input" placeholder="******" name="password" type="password" value={formState.password} onChange={handleChange} />
                 <label className='checkbox'> Are you a moneyboi?</label>
-                <select name="moneyboi" onChange={handleChange}>
+                <select className="moneyboi" onChange={handleChange}>
                   <option value="0">No</option>
                   <option value="1">Yes</option>
                 </select>
